@@ -1,0 +1,54 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "usernames": {
+      "$name": {
+        ".read": false,
+        ".write": false
+      }
+    },
+    "presence": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "rooms": {
+      "$code": {
+        ".read": "auth != null",
+        ".write": false
+      }
+    },
+    "matchmakingQueue": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "matches": {
+      "$matchId": {
+        ".read": "auth != null && data.child('uidToPenId').hasChild(auth.uid)",
+        ".write": false
+      }
+    },
+    "matchHistory": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "playerStats": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": false
+      }
+    }
+  }
+}
